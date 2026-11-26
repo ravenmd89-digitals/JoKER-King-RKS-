@@ -1,0 +1,36 @@
+JoKER King RKS MD - EDIT / TEST REPORT
+=====================================
+
+CHANGES MADE
+------------
+1. Bot branding changed to: JoKER King 👑 RKS MD.
+2. Owner number set to +923280355660 in settings and the existing .env.
+3. Owner name set to rana FURQAN.
+4. WhatsApp Channel, Group, Owner and TikTok links configured using the links supplied by the user.
+5. Menu image URL changed to https://files.catbox.moe/xzb0ix.jpg.
+6. Existing assets/menu/menu_intro.mp4 was preserved; no re-encoding or replacement performed.
+7. Menu list split into two separate native-flow selectors (7 rows + 6 rows) because the previous 13-row selector exceeded WhatsApp's 10-row list limit.
+8. Channel, Group and Owner CTA buttons are sent separately in one message (3 buttons); TikTok link is also shown.
+9. Menu styling changed to red, black and gold.
+10. Pairing website branding and CSS theme changed to red, black and gold. Owner, channel, group and TikTok links are shown on the home page.
+11. .play now resolves a YouTube URL/search, calls the specified Oggy API, accepts an audio stream or JSON download URL, verifies/converts the audio through the existing audioTools pipeline, and sends actual audio bytes.
+12. Existing website and shared pairing service architecture preserved.
+
+TESTS ACTUALLY PERFORMED
+-----------------------
+- Node syntax check passed for all active JavaScript files (excluding archived backup folder).
+- Menu catalogue loaded: 11 categories and 212 unique command names.
+- Menu selector structure checked: 13 total rows split into 7 + 6; neither selector exceeds 10 rows.
+- Social CTA builder checked: exactly 3 buttons (Channel, Group, Owner).
+- Local HTTP smoke test passed (HTTP 200) for /, /pair, /guide, /about, /contact, /assets/style.css, /assets/logo.svg, /health and /api/config.
+
+NOT VERIFIED / LIMITATIONS
+--------------------------
+- node_modules were not present in the working environment, so dependencies were not installed and no live Baileys/WhatsApp pairing test was possible.
+- The external Oggy API was integrated but a live audio download was not verified in this environment. The command has response validation and audio verification/error handling.
+- The ZIP did not contain five distinct server URLs/configurations or credentials. The existing project contains one shared pairing backend in the bot process. No fake five-server configuration was added. To implement five separate servers, the owner must provide the actual server endpoints and any required credentials/configuration.
+- Katabump deployment was not performed. The existing single-process HTTP server still binds to 0.0.0.0 using PORT / SERVER_PORT fallback; deploy compatibility depends on the allocated port, persistent storage and installed dependencies.
+
+IMPORTANT
+---------
+This report distinguishes local static/HTTP checks from live service tests. Do not treat WhatsApp pairing or .play as live-certified until tested on the actual host with dependencies and network access.
